@@ -109,3 +109,28 @@ object Q11 {
       get() = files.map{ it.name + ":\n" + it.content }.joinToString("\n")
   }
 }
+
+val q12Answer = """
+  The definition of Adapter is that it changes the interface to one
+  that the client is familiar with. If the interface is unchanged,
+  then the Adapter is not acting as such. It could well act as another role
+  instead - such as a Proxy to add e.g. logging, or an authorization
+  element to stop the client calling methods without login or
+  certain privileges.
+  """.trimIndent()
+
+val q13Answer = """
+  The possibilities are Visitor or Composite. I would use Visitor
+  as it provides the ability to solve both problems at once.
+  ItemInterface should include an accept() method, to accept a visitor.
+  All 3 implementations should implement accept() as calling v.visit(this)
+  on the passed Visitor object.
+  a. A TotalPagesVisitor can visit all the ItemInterface-implemented
+  items in the library. For books it adds pages to its count, for
+  magazines it merely visits all their articles, and for articles, it
+  adds all pages to its count. It returns a total page count.
+  b. Similar to a, a visitor can keep a hashSet of previously-seen
+  authors. It can add authors of Books to this set, search all Articles
+  of Magazines, and add all Article authors to its set. Then it can return
+  the size of the set.
+  """.trimIndent()
