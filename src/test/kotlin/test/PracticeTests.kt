@@ -53,6 +53,11 @@ class PracticeTests {
     assertEquals(6, sumIt(1,2,3))
   }
 
+  @Test fun q10() {
+    val visitResult = Q10.TripleVisitor().visit(Q10.Visitee(10))
+    assertEquals(30, visitResult)
+  }
+
 
 
 
