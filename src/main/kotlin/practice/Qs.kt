@@ -23,11 +23,20 @@ data class Item(val name: String, val price: Double) {
 }
 
 // q4
-class ClothesWasher(modelName: String = "ACME", capacity: Double = 1.0) {
+class ClothesWasher(val modelName: String = "ACME", val capacity: Double = 1.0) {
   constructor (modelName: String) : this(modelName, 1.0)
   constructor (capacity: Double) : this("ACME", capacity)
+  override fun toString():String = "$modelName + $capacity"
 }
 
 // q5
 data class Person(
   val firstName: String, val lastName: String, val email: String)
+
+// q6
+val q6func = { temperature: Int, low: Int, high: Int ->
+  temperature >= low && temperature <= high }
+
+// q7
+fun sumIt(vararg elems: Int): Int =
+  elems.reduce{acc, elem -> acc + elem}

@@ -43,4 +43,17 @@ class PracticeTests {
       p.lastName == "Bloggs" &&
       p.email == "j@b.com")
   }
+
+  @Test fun q6() {
+    assertEquals(true, q6func(30,20,40))
+    assertEquals(false, q6func(15,20,40))
+  }
+
+  @Test fun q7() {
+    assertEquals(6, sumIt(1,2,3))
+  }
+
+
+
+
 }
