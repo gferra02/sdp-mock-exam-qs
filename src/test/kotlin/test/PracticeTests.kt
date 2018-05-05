@@ -10,4 +10,9 @@ class PracticeTests {
     assertEquals("abcabcabc", m1)
   }
 
+  @Test
+  fun t2() {
+    assertEquals(true, false)
+  }
+
 }
