@@ -84,3 +84,28 @@ object Q10 {
     override fun visit(v: Visitee): Int = v.serialNumber * 3
   }
 }
+
+val q11Answer = """
+  Composite pattern is ideal for situations where individual items, and
+  collections of items, can be represented in the same way by the same
+  API, so the client can delegate to the Composite interface the job
+  of performing operations on other individuals or collections
+  """.trimIndent()
+
+object Q11 {
+  interface FileHandle {
+    val name: String
+    val content: String
+  }
+
+  data class File(
+    override val name: String,
+    override val content: String) : FileHandle
+
+  class Directory(
+    override val name: String,
+    val files: List<FileHandle>) : FileHandle {
+    override val content: String
+      get() = files.map{ it.name + ":\n" + it.content }.joinToString("\n")
+  }
+}

@@ -58,6 +58,15 @@ class PracticeTests {
     assertEquals(30, visitResult)
   }
 
+  @Test fun q11() {
+    val resolvConfFile = Q11.File("resolv.conf", "nameserver 8.8.8.8")
+    val passwordFile = Q11.File("passwd", "mralph:superCool:1001")
+    val etcDir = Q11.Directory("/etc", listOf(resolvConfFile, passwordFile))
+    val tmpDir = Q11.Directory("/tmp", emptyList<Q11.FileHandle>())
+    val rootDir = Q11.Directory("/",listOf(etcDir, tmpDir))
+    assertTrue(rootDir.content.contains("nameserver"))
+  }
+
 
 
 
