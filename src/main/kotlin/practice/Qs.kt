@@ -21,3 +21,13 @@ data class Item(val name: String, val price: Double) {
       return if (grocery || medication) price else price * (1 + taxRate)
     }
 }
+
+// q4
+class ClothesWasher(modelName: String = "ACME", capacity: Double = 1.0) {
+  constructor (modelName: String) : this(modelName, 1.0)
+  constructor (capacity: Double) : this("ACME", capacity)
+}
+
+// q5
+data class Person(
+  val firstName: String, val lastName: String, val email: String)

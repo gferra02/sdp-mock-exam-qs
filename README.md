@@ -1,4 +1,3 @@
-
 ## SDP mock questions
 A repo with attempted answers to the mock questions, and with Unit Tests (JUnit 5, hipsters) to validate them.
 

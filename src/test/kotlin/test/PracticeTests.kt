@@ -28,4 +28,19 @@ class PracticeTests {
     val tv = Item(name="television", price=500.0)
     assertTrue(tv.cost(taxRate = 0.06) nearEnough 530.0)
   }
+
+  @Test fun q4() {
+    // No assertions - just checking it compiles
+    ClothesWasher("Microsoft")
+    ClothesWasher(11.0) // turn it up to 11
+    ClothesWasher("Microsoft", 11.0)
+  }
+
+  @Test fun q5() {
+    val p = Person("Joe", "Bloggs", "j@b.com")
+    assertTrue(
+      p.firstName == "Joe" &&
+      p.lastName == "Bloggs" &&
+      p.email == "j@b.com")
+  }
 }
