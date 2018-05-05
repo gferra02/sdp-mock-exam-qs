@@ -134,3 +134,22 @@ val q13Answer = """
   of Magazines, and add all Article authors to its set. Then it can return
   the size of the set.
   """.trimIndent()
+
+val q14Answer = """
+  The decorator pattern provides a way to add an arbitrary number of
+  features, an arbitrary number of times, to objects. It uses
+  recursive composition, with all variants sharing same interface,
+  so the client can always interact with the same API no matter how
+  nested the object becomes.
+
+  For example, if a coffee shop serves coffee with different variations
+  on adding cream, milk, marshmellows, cinnamon and sugar, creating
+  a subclass hierarchy for all those possibilities would result in an
+  explosion of different implementations to manage. Instead, we can simply
+  have one class per added condiment (e.g. CoffeeCinnamon), have them
+  all fulfil the 'Coffee' interface, and then have them each accept
+  a member which itself fulfils the Coffee interface. Then we can
+  wrap CoffeeCinnamon(CoffeeCream(CoffeeMarshmallows))) to represent
+  a coffee with those 3 condiments. CoffeeMarshmallows needs to have
+  null for its Coffee member field.
+  """.trimIndent()
