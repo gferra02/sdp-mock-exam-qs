@@ -153,3 +153,33 @@ val q14Answer = """
   a coffee with those 3 condiments. CoffeeMarshmallows needs to have
   null for its Coffee member field.
   """.trimIndent()
+
+val q15Answer = """
+  There is both an abstraction and an implementation to vary here. As such,
+  I would use the bridge pattern. This would ensure that I could vary one
+  hierarchy, e.g. the publication format abstraction, separately from the other
+  hierarchy, the media implementation, without resulting in an explosion
+  of different subclasses.
+  e.g.:
+  interface PubFormat -------------> class PubFormatMedia
+
+  Interface book extends PubFormat
+  Interface article extends PubFormat
+  Interace leadlet extends PubFormat
+
+  class CD extends PubFormatMedia
+  class DVD extends PubFormatMedia
+  class Website extends PubFormatMedia
+  """.trimIndent()
+
+val q16Answer = """
+  Provide a simplified interface which is opinionated, and offers simplified,
+  reduced functionality from a complex subsystem, to a client whose particular
+  needs are well understood.""".trimIndent()
+
+val q17Answer = """
+  Visitor pattern. The defined Visitor implementations
+  contain different logic which they bring to the context,
+  and hence new visitors can be written to add
+  new functionality. TODO what do I say for total of 5 marks?!?!
+  """.trimIndent()
