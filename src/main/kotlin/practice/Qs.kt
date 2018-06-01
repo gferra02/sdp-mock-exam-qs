@@ -1,4 +1,5 @@
 package practice
+import java.lang.reflect.Method
 
 // q1
 fun manyTimesString(s: String, i: Int): String {
@@ -183,3 +184,74 @@ val q17Answer = """
   and hence new visitors can be written to add
   new functionality. TODO what do I say for total of 5 marks?!?!
   """.trimIndent()
+
+val q18Answer = """
+  client --> photoProcessor --> photoRepository
+  photoProcessor is a Proxy which checks the client's permissions before
+  allowing certain methods to succeed - i.e. download / comment
+  """.trimIndent()
+
+val q19Answer = """
+  1. Encapsulation
+  2. Inheritance
+  3. Polymorphism
+  """
+
+val q20Answer = """
+  a. Creational patterns:
+  - builder
+  - factory method
+  - abstract factory
+  - Flyweight
+  - Clone?
+
+  b. Singleton pattern:
+  Solves problem of not wasting memory for an object that is only needed once,
+  and of ensuring the object isn't created multiple times even in a
+  multithreaded scenario.
+
+  c. Singleton pattern interface:
+
+  interface MySingleton
+  private MySingleton instance;
+  public static MySingleton getInstance() // returns instance of MySingleton,
+    guaranteed to be only 1
+  """
+
+fun q21ReflectionExample(obj: Any) {
+  val c: Class<*> = obj::class.java
+  val methods: Array<Method> = c.getMethods()
+  methods.forEach { m ->
+      val exceptions = m.getExceptionTypes().toList()
+      val paramTypes = m.getParameterTypes().toList()
+      println("${m.getName()}, $exceptions, $paramTypes, ${m.getReturnType()}")
+  }
+}
+
+object Main {
+  @JvmStatic
+  fun main(args: Array<String>) {
+    q21ReflectionExample("Busses")
+    println("Running")
+  }
+}
+
+fun q22Answer = """
+a. GoF Structural DPs:
+    - Adapter
+    - Facade
+    - Mediator
+    - Visitor
+    - Bridge
+    - Composite
+    - Chain of Responsibility
+b. MVC solves the problem of tight coupling between the UI, business logic
+    and backend.
+    View: an Observer that watches the Model for changes and renders them
+        to the screen
+    Model: A data structure holding structured data for the application,
+        often conceptualised as OO objects for business domain
+    Controller: a pseudo-facade designed to give the client an endpoint (usually
+        HTTP/RESTful) to call to update the Model
+c.
+"""
