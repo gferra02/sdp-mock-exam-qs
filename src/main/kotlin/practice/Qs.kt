@@ -239,12 +239,29 @@ object Main {
 fun q22Answer = """
 a. GoF Structural DPs:
     - Adapter
-    - Facade
-    - Mediator
-    - Visitor
     - Bridge
     - Composite
+    - Decorator
+    - Facade
+    - Flyweight
+    - Proxy
+Also Creational DPs:
+    - Abstract Factory
+    - Factory Method
+    - Builder
+    - Prototype
+Finally Behavioural DPs:
     - Chain of Responsibility
+    - Command
+    - Interpreter
+    - Iterator
+    - Mediator
+    - Memento
+    - Observer
+    - State
+    - Strategy
+    - Template Method
+    - Visitor
 b. MVC solves the problem of tight coupling between the UI, business logic
     and backend.
     View: an Observer that watches the Model for changes and renders them
