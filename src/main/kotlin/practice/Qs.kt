@@ -305,7 +305,12 @@ inheritance and delegation
 // q28
 typealias Matrix = List<List<Int>>
 fun checkBlock(m: Matrix): Boolean {
-    val l: List<Int> = m.flatMap {l -> l.map { e -> e } }
+    val l: List<Int?> =
+        m.flatMap {
+            l -> l.map {
+                e -> e
+            }
+        }.filter { it <= 9 && it >= 1 }
     return l.toSet().size == 9
 }
 
