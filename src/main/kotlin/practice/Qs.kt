@@ -236,7 +236,7 @@ object Main {
   }
 }
 
-fun q22Answer = """
+val q22Answer = """
 a. GoF Structural DPs:
     - Adapter
     - Bridge
@@ -270,5 +270,45 @@ b. MVC solves the problem of tight coupling between the UI, business logic
         often conceptualised as OO objects for business domain
     Controller: a pseudo-facade designed to give the client an endpoint (usually
         HTTP/RESTful) to call to update the Model
-c.
+c. Sensu/Uchiwa. View is NodeJS frontend, an Observer of Sensu Model via
+the Sensu API. Sensu API also acts as Controller - changes made in Uchiwa
+are submitted to Sensu API, and Uchiwa will not update UI till its next
+poll. Also Sensu API can be hit directly by other clients.
 """
+
+val q23Answer = """
+a. Loose Coupling is related to the SOLID principle of Depenency Inversion.
+It stipulates that concrete implementations should not depend on each-other -
+instead, both should depend on abstractions. This means that objects should generally
+not instantiate other concrete objects using new - instead, they should
+depend on interfaces, which change less often than implementation and are
+a level of abstraction higher.
+
+b. Of course, without 'New' you need a way to actually get objects - a DI framework
+is a good solution for this, and tidier than an initialization script that
+creates all required objects (but must work out their dependency orders).
+E.g.
+"""
+interface MySimpleInterface
+class MyComplexObject: MySimpleInterface
+
+class q23bObjExample  {
+    val obj: MySimpleInterface = MyComplexObject()
+}
+
+// The class has to create its own ComplexObject. It would be simpler for
+// e.g. Spring to instantiate an object fulfilling MySimpleInterface, for it.
+
+val q24Answer = """
+inheritance and delegation
+"""
+// q28
+typealias Matrix = List<List<Int>>
+fun checkBlock(m: Matrix): Boolean {
+    val l: List<Int> = m.flatMap {l -> l.map { e -> e } }
+    return l.toSet().size == 9
+}
+
+// Eileen 23-28
+// Alun 29-34
+// matt 34,35, 38,39

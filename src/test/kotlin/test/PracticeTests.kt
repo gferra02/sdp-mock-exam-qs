@@ -3,6 +3,7 @@ import practice.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.assertFalse
 
 class PracticeTests {
   // For comparing Doubles - we don't care if they are slightly out
@@ -67,7 +68,9 @@ class PracticeTests {
     assertTrue(rootDir.content.contains("nameserver"))
   }
 
-
-
+  @Test fun q28() {
+      assertTrue(checkBlock(listOf(listOf(1,2,3),listOf(4,5,6),listOf(7,8,9))))
+      assertFalse(checkBlock(listOf(listOf(1,2,3),listOf(3,5,6),listOf(7,8,9))))
+  }
 
 }
