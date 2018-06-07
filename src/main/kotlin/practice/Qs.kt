@@ -1,13 +1,57 @@
 package practice
 import java.lang.reflect.Method
 
-// q1
-fun manyTimesString(s: String, i: Int): String {
-  tailrec fun loop(stringSoFar: String, i: Int): String {
-    return if (i == 0) stringSoFar else loop(stringSoFar + s, i - 1)
+// Q1
+// Create a method manyTimesString that takes a String and an Int as arguments
+// and returns the String duplicated that many times. Print your answer. Satisfy the
+// following:
+// val m1 = manyTimesString("abc", 3)
+// assert("abcabcabc" == m1,"Your message here")
+// val m2 = manyTimesString("123", 2)
+// assert("123123" == m2, "Your message here")
+
+// Q1 With iteration
+fun manyTimesString(str: String, times: Int) : String {
+  var result = ""
+    if (times == 0) result = str
+  for (i in 1..times) {
+    result += str
   }
-  return loop (s, i - 1)
+  return result
 }
+
+// Q1 With recursion
+fun manyTimesStringRec(str: String, times: Int) : String {
+    var result = ""
+    if (times == 0 || times == 1) {
+        result = str
+    } else {
+        for (i in 1..times) {
+            manyTimesStringRec(result, i - 1)
+            result += str
+        }
+    }
+
+    return result
+}
+
+fun main(args: Array<String>) {
+    println("Q1 with iteration (times 3): ${manyTimesString("abs", 3)}")
+    println("Q1 with iteration (times 0): ${manyTimesString("abs", 0)}")
+    println("Q1 with recursion (times 3): ${manyTimesStringRec("abs", 3)}")
+    println("Q1 with recursion (times 0): ${manyTimesStringRec("abs", 0)}")
+}
+
+
+
+
+// q1
+//fun manyTimesString(s: String, i: Int): String {
+//  tailrec fun loop(stringSoFar: String, i: Int): String {
+//    return if (i == 0) stringSoFar else loop(stringSoFar + s, i - 1)
+//  }
+//  return loop (s, i - 1)
+//}
 
 // q2
 data class SimpleTime(val hours: Int, val minutes: Int)
