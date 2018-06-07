@@ -22,15 +22,8 @@ fun manyTimesString(str: String, times: Int) : String {
 
 // Q1 With recursion
 fun manyTimesStringRec(str: String, times: Int) : String {
-    var result = ""
-    if (times == 0 || times == 1) {
-        result = str
-    } else {
-        for (i in 1..times) {
-            manyTimesStringRec(result, i - 1)
-            result += str
-        }
-    }
+    var result = str
+    if (times > 1) result += manyTimesStringRec(result, times - 1)
 
     return result
 }
