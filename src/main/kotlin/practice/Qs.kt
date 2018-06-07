@@ -35,16 +35,6 @@ fun manyTimesStringRec(str: String, times: Int) : String {
     return result
 }
 
-fun main(args: Array<String>) {
-    println("Q1 with iteration (times 3): ${manyTimesString("abs", 3)}")
-    println("Q1 with iteration (times 0): ${manyTimesString("abs", 0)}")
-    println("Q1 with recursion (times 3): ${manyTimesStringRec("abs", 3)}")
-    println("Q1 with recursion (times 0): ${manyTimesStringRec("abs", 0)}")
-}
-
-
-
-
 // q1
 //fun manyTimesString(s: String, i: Int): String {
 //  tailrec fun loop(stringSoFar: String, i: Int): String {
@@ -53,26 +43,106 @@ fun main(args: Array<String>) {
 //  return loop (s, i - 1)
 //}
 
-// q2
-data class SimpleTime(val hours: Int, val minutes: Int)
-val t = SimpleTime(hours=5, minutes=30)
+// Q2
+// Define a class SimpleTime that takes two arguments: an Int that represents hours,
+// and an Int that represents minutes. Use named arguments to create a SimpleTime
+// object.
+// val t = new SimpleTime(hours=5, minutes=30)
+// t.hours produces 5
+// t.minutes produces 30
 
-// q3
-data class Item(val name: String, val price: Double) {
-  fun cost(
-    grocery: Boolean = false,
-    medication: Boolean = false,
-    taxRate: Double = 0.10): Double {
-      return if (grocery || medication) price else price * (1 + taxRate)
+data class SimpleTime (val hours: Int, val minutes: Int)
+val t = SimpleTime(hours = 5, minutes = 30)
+
+// Q3
+// Demonstrate that named and default arguments can be used with methods. Create a
+// class Item that takes two class arguments: A String for name and a Double for price.
+// Add a method cost which has named arguments for grocery (Boolean), medication
+// (Boolean), and taxRate (Double). Default grocery and medication to false, taxRate
+// to 0.10.
+// In this scenario, groceries and medications are not taxable. Return the total cost of
+// the item by calculating the appropriate tax. Satisfy the following:
+// val flour = new Item(name="flour", 4)
+// flour.cost(grocery=true) is 4
+// val sunscreen = new Item(name="sunscreen", 3)
+// sunscreen.cost() is 3.3
+// val tv = new Item(name="television", 500)
+
+class Item (val name: String, var price: Double) {
+    fun cost(grocery: Boolean = false, medication: Boolean = false, taxrate: Double = 0.10) : Double {
+        if (grocery || medication) {
+            price
+        } else {
+            price += price * taxrate
+        }
+
+        return price
     }
 }
 
-// q4
-class ClothesWasher(val modelName: String = "ACME", val capacity: Double = 1.0) {
-  constructor (modelName: String) : this(modelName, 1.0)
-  constructor (capacity: Double) : this("ACME", capacity)
-  override fun toString():String = "$modelName + $capacity"
+// q3
+//data class Item(val name: String, val price: Double) {
+//  fun cost(
+//    grocery: Boolean = false,
+//    medication: Boolean = false,
+//    taxRate: Double = 0.10): Double {
+//      return if (grocery || medication) price else price * (1 + taxRate)
+//    }
+//}
+
+// Q4
+// Create a class called ClothesWasher with a default constructor and two auxiliary
+// constructors, one that specifies modelName (as a String) and one that specifies
+// capacity (as a Double).
+
+class ClothesWasher (val modelName: String = "Candy", val capacity: Double = 7.0) {
+    constructor(modelName: String) : this(modelName, 9.0)
+    constructor(capacity: Double) : this("Whirpool", capacity)
+
+    override fun toString(): String = "$modelName $capacity"
 }
+
+fun main(args: Array<String>) {
+    //Q1
+    println("Q1 with iteration (times 3): ${manyTimesString("abs", 3)}")
+    println("Q1 with iteration (times 0): ${manyTimesString("abs", 0)}")
+    println("Q1 with recursion (times 3): ${manyTimesStringRec("abs", 3)}")
+    println("Q1 with recursion (times 0): ${manyTimesStringRec("abs", 0)}")
+
+    //Q2
+    val t = SimpleTime(hours = 5, minutes = 30)
+    // Added toString() just to print it out
+    println(t.hours.toString() + ":" + t.minutes.toString())
+
+    //Q3
+    val flour = Item("flour", 4.0)
+    println(flour.cost(grocery=true))
+    val sunscreen = Item("sunscreen", 3.0)
+    println(sunscreen.cost())
+    val tv = Item("television", 500.0)
+    println(tv.cost(taxrate = 0.06))
+
+    //Q4
+
+    val washer = ClothesWasher("Bosch")
+    val washer1 = ClothesWasher(11.0)
+    val washer2 = ClothesWasher()
+    println(washer)
+    println(washer1)
+    println(washer2)
+}
+
+
+
+
+
+
+// q4
+//class ClothesWasher(val modelName: String = "ACME", val capacity: Double = 1.0) {
+//  constructor (modelName: String) : this(modelName, 1.0)
+//  constructor (capacity: Double) : this("ACME", capacity)
+//  override fun toString():String = "$modelName + $capacity"
+//}
 
 // q5
 data class Person(
