@@ -95,6 +95,44 @@ class ClothesWasher (val modelName: String = "Candy", val capacity: Double = 7.0
     override fun toString(): String = "$modelName $capacity"
 }
 
+// Q5
+// Create a case class to represent a Person in an address book, complete with Strings
+// for the name and a String for contact information.
+// Satisfy the following:
+// val p = Person("Jane", "Smile","jane@smile.com")
+// p.first is "Jane"
+// p.last is "Smile"
+// p.email is "jane@smile.com"
+
+data class Person (val firstName: String, val lastName: String, val email: String) {
+    override fun toString(): String = "$firstName $lastName, $email"
+}
+
+// Q6
+// Create an anonymous function with three arguments ( temperate, low, and high).
+// The anonymous function will return true if the temperature is between high and
+// low, and false otherwise. Assign the anonymous function to a def and then call your
+// function.
+// Satisfy the following:
+// between(70, 80, 90) is false
+// between(70, 60, 90) is true
+
+val anonFunc = {
+    temperature : Int, low : Int, high : Int -> { temperature > low && temperature < high }
+}
+
+val q6func = { temperature: Int, low: Int, high: Int ->
+    temperature >= low && temperature <= high }
+
+// Q7
+// Use reduce to implement a method sumIt that takes a variable argument list and sums
+// those arguments.
+// For example,
+// sumIt(1, 2, 3) is 6
+// sumIt(45, 45, 45, 60) is 195
+
+fun sumIt (vararg listItem: Int) : Int = listItem.reduce{ acc, listItem -> acc + listItem}
+
 fun main(args: Array<String>) {
     //Q1
     println("Q1 with iteration (times 3): ${manyTimesString("abs", 3)}")
@@ -116,38 +154,24 @@ fun main(args: Array<String>) {
     println(tv.cost(taxrate = 0.06))
 
     //Q4
-
     val washer = ClothesWasher("Bosch")
     val washer1 = ClothesWasher(11.0)
     val washer2 = ClothesWasher()
     println(washer)
     println(washer1)
     println(washer2)
+
+    // Q5
+    val person = Person("Jane", "Smith", "jane.smith@email.dot")
+    println(person)
+
+    // Q6
+    anonFunc(23, 18, 35)
+
+    // Q7
+    println(sumIt(1, 2, 3))
 }
 
-
-
-
-
-
-// q4
-//class ClothesWasher(val modelName: String = "ACME", val capacity: Double = 1.0) {
-//  constructor (modelName: String) : this(modelName, 1.0)
-//  constructor (capacity: Double) : this("ACME", capacity)
-//  override fun toString():String = "$modelName + $capacity"
-//}
-
-// q5
-data class Person(
-  val firstName: String, val lastName: String, val email: String)
-
-// q6
-val q6func = { temperature: Int, low: Int, high: Int ->
-  temperature >= low && temperature <= high }
-
-// q7
-fun sumIt(vararg elems: Int): Int =
-  elems.reduce{acc, elem -> acc + elem}
 
 // q8
 val q8Answer = """
