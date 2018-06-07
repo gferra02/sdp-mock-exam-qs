@@ -85,4 +85,11 @@ class PracticeTests {
     assertEquals(expected, result)
   }
 
+  @Test fun q39() {
+    val results = listOf(Pair(Pair("Thorin","Gloin"),1), Pair(Pair("Thorin","Balin"), -1), Pair(Pair("Gloin","Thorin"), -1),
+            Pair(Pair("Gloin","Balin"),1), Pair(Pair("Balin","Thorin"), -1), Pair(Pair("Balin","Gloin"), 1))
+    val expectedWinner = "Thorin"
+    assertEquals("Thorin", winner(results))
+  }
+
 }
