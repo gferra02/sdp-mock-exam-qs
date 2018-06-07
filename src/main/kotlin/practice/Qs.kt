@@ -479,8 +479,35 @@ class StringPercussionInstrument(override val lowRange: Int, override val highRa
 // q38
 typealias Duel = Pair<String, String>
 fun duels(dwarves: List<String>) : List<Duel> {
-  return listOf(Pair("N", "M"))
+  tailrec fun duels(dwarves: List<String>, opponent: Int, acc: List<Duel>): List<Duel> {
+    return when {
+      dwarves.size == 2 -> acc + Pair(dwarves[0], dwarves[1])
+      opponent < dwarves.size -> {
+        duels(dwarves, opponent + 1, acc + Pair(dwarves[0], dwarves[opponent]))
+      }
+      // opponent == dwarves.size
+      else -> {
+        duels(dwarves.drop(1), 1, acc)
+      }
+    }
+  }
+  return duels(dwarves, 1, emptyList<Duel>())
+}
 
+fun winner(duels: List<Pair<Duel, Int>>): String {
+  fun winner(duels: List<Pair<Duel, Int>>, scoreMap: Map<String, Int>): String {
+    // If duels is empty, we're done - return top scorer
+    if (duels.isEmpty()) {
+      return scoreMap.maxBy({ it.value })?.key ?: "No Contestants"
+    }
+    else {
+      val (fighters: Pair<String, String>, result: Int) = duels[0]
+      val victor: String = if (result == 1) fighters.first else fighters.second
+      val victorScore: Int = scoreMap.getOrDefault(victor, 0) + 1
+      return winner(duels.drop(1), scoreMap + (victor to victorScore))
+    }
+  }
+  return winner(duels, emptyMap<String, Int>())
 }
 
 // Eileen 23-28
