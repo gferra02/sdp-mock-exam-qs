@@ -69,8 +69,20 @@ class PracticeTests {
   }
 
   @Test fun q28() {
-      assertTrue(checkBlock(listOf(listOf(1,2,3),listOf(4,5,6),listOf(7,8,9))))
-      assertFalse(checkBlock(listOf(listOf(1,2,3),listOf(3,5,6),listOf(7,8,9))))
+    assertTrue(checkBlock(listOf(listOf(1,2,3),listOf(4,5,6),listOf(7,8,9))))
+    assertFalse(checkBlock(listOf(listOf(1,2,3),listOf(3,5,6),listOf(7,8,9))))
+  }
+
+  @Test fun q35() {
+    val s = StringPercussionInstrument(1,20)
+    assertEquals(1, s.lowRange)
+  }
+
+  @Test fun q38() {
+    val dwarfList = listOf("A","B","C")
+    val result: List<Duel> = duels(dwarfList)
+    val expected: List<Duel> = listOf(Pair("A", "B"), Pair("A", "C"), Pair("B", "C"))
+    assertEquals(expected, result)
   }
 
 }

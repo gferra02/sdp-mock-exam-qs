@@ -314,6 +314,44 @@ fun checkBlock(m: Matrix): Boolean {
     return l.toSet().size == 9
 }
 
+val q34Answer = """
+Use proxy pattern. System works fine, and the addition is to superimpose
+something on the output of the original. As we are keeping same interface,
+cannot be adapter. Proxy can superimpose extra functionality before returning
+result to caller.
+"""
+
+// q35
+interface Instrument  {
+    val lowRange: Int
+    val highRange: Int
+    fun play(): Unit = println("Make sound")
+}
+interface StringInstrument: Instrument {
+    override fun play() = println("Twang!")
+    fun tune(): Unit
+}
+interface PercussionInstrument : Instrument {
+    override fun play() = println("Thump!")
+    fun strike(): Unit
+}
+class StringPercussionInstrument(override val lowRange: Int, override val highRange: Int)
+    : StringInstrument, PercussionInstrument {
+    override fun play() {
+        super<StringInstrument>.play()
+        super<PercussionInstrument>.play()
+    }
+    override fun tune() = println("Pull the string, re-fasten the pole")
+    override fun strike() = println("Beat and try not to fall over")
+}
+
+// q38
+typealias Duel = Pair<String, String>
+fun duels(dwarves: List<String>) : List<Duel> {
+  return listOf(Pair("N", "M"))
+
+}
+
 // Eileen 23-28
 // Alun 29-34
 // matt 34,35, 38,39
