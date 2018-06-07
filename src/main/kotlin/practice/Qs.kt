@@ -348,8 +348,19 @@ class StringPercussionInstrument(override val lowRange: Int, override val highRa
 // q38
 typealias Duel = Pair<String, String>
 fun duels(dwarves: List<String>) : List<Duel> {
-  return listOf(Pair("N", "M"))
-
+  tailrec fun duels(dwarves: List<String>, opponent: Int, acc: List<Duel>): List<Duel> {
+    return when {
+      dwarves.size == 2 -> acc + Pair(dwarves[0], dwarves[1])
+      opponent < dwarves.size -> {
+        duels(dwarves, opponent + 1, acc + Pair(dwarves[0], dwarves[opponent]))
+      }
+      // opponent == dwarves.size
+      else -> {
+        duels(dwarves.drop(1), 1, acc)
+      }
+    }
+  }
+  return duels(dwarves, 1, emptyList<Duel>())
 }
 
 // Eileen 23-28
